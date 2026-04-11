@@ -6,18 +6,19 @@ let presupuesto=0;//el test 1 no funciona con var
 function actualizarPresupuesto(valor) {
     // TODO
     //let valor; ne pas declarer 2 fois
-    if(valor>=0 && !isNaN(valor))//ne pas oublier isNAN!!
-    {presupuesto=  valor;
-        return presupuesto;//retounre le presupuesto pas la valeur
+    if(valor>=0 && !isNaN(valor))//ne pas oublier isNAN!! //BLOC1: validacion
+    {presupuesto=  valor;//Bloc2: action
+        return presupuesto;//retounre le presupuesto pas la valeur // BLOC3: retour
     }
     else{
-        alert("error")
+        console.log("error")//alert no pasa el test= hacer console.log
         return -1;}//pas besoin de mettre valor=-1; return Valor;
     }
 
 
-function mostrarPresupuesto() {
-    // TODO
+function mostrarPresupuesto() //la fonction doit etourner un texte qui contient la valeur de presupuesto
+{
+    return "Tu presupuesto actual es de "+ presupuesto +" €" // o `Tu presupuesto actual es de ${presupuesto} €`
 }
 
 function CrearGasto() {
