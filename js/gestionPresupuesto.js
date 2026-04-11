@@ -36,9 +36,26 @@ function CrearGasto(descripcion,valor) //funcion constructora= ne retourne rien 
     {
         this.valor=0;
     }
- 
+    //METODOS
+ this.mostrarGasto=function() //bien mettre this pour faire reference al afonction crear
+ {
+    return `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €`;
+ }
 
-}
+ this.actualizarDescripcion=function(descripcion)
+    {
+    this.descripcion=descripcion;
+    }
+this.actualizarValor=function(valor)
+    {
+    if(!isNaN(valor) && valor>=0)
+    {
+    this.valor=valor;
+    }
+    }
+ }
+
+ 
 
 // NO MODIFICAR A PARTIR DE AQUÍ: exportación de funciones y objetos creados para poder ejecutar los tests.
 // Las funciones y objetos deben tener los nombres que se indican en el enunciado
