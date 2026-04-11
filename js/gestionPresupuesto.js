@@ -1,11 +1,20 @@
 // TODO: Crear las funciones, objetos y variables indicadas en el enunciado
 
 // TODO: Variable global
+let presupuesto=0;
 
-
-function actualizarPresupuesto() {
+function actualizarPresupuesto(valor) {
     // TODO
-}
+    //let valor; ne pas declarer 2 fois
+    if(valor>=0 && !isNaN(valor))//ne pas oublier isNAN!!
+    {presupuesto=  valor;
+        return presupuesto;//retounre le presupuesto pas la valeur
+    }
+    else{
+        console.log("error")
+        return -1;}//pas besoin de mettre valor=-1; return Valor
+    }
+
 
 function mostrarPresupuesto() {
     // TODO
