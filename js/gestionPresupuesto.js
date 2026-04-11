@@ -21,8 +21,23 @@ function mostrarPresupuesto() //la fonction doit etourner un texte qui contient 
     return "Tu presupuesto actual es de "+ presupuesto +" €" // o `Tu presupuesto actual es de ${presupuesto} €`
 }
 
-function CrearGasto() {
-    // TODO
+function CrearGasto(descripcion,valor) //funcion constructora= ne retourne rien attention! //“Je définis une fonction appelée CrearGasto
+{
+    this.descripcion=descripcion; //Dans l’objet en cours de création (this)->j’assigne à la propriété descripcion,la valeur du paramètre descripcion
+    //JavaScript retourne AUTOMATIQUEMENT :this
+    //dans this.descripcion=descripcion: 
+    //this.descripcion description= propriete de l objet 
+    // //description apres le signe= : le paramètre de la fonction ou valeur passée quand on appelle la fonction
+    if(!isNaN(valor) && valor>=0)
+    {
+        this.valor=valor;
+    }
+    else
+    {
+        this.valor=0;
+    }
+ 
+
 }
 
 // NO MODIFICAR A PARTIR DE AQUÍ: exportación de funciones y objetos creados para poder ejecutar los tests.
