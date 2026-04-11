@@ -1,7 +1,7 @@
 // TODO: Crear las funciones, objetos y variables indicadas en el enunciado
 
 // TODO: Variable global
-let presupuesto=0;
+let presupuesto=0;//el test 1 no funciona con var
 
 function actualizarPresupuesto(valor) {
     // TODO
@@ -11,8 +11,8 @@ function actualizarPresupuesto(valor) {
         return presupuesto;//retounre le presupuesto pas la valeur
     }
     else{
-        console.log("error")
-        return -1;}//pas besoin de mettre valor=-1; return Valor
+        alert("error")
+        return -1;}//pas besoin de mettre valor=-1; return Valor;
     }
 
 
