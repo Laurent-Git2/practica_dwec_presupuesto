@@ -1,5 +1,4 @@
 // TODO: Crear las funciones, objetos y variables indicadas en el enunciado
-
 // TODO: Variable global
 let presupuesto=0;//el test 1 no funciona con var
 
@@ -21,7 +20,7 @@ function mostrarPresupuesto() //la fonction doit etourner un texte qui contient 
     return "Tu presupuesto actual es de "+ presupuesto +" €" // o `Tu presupuesto actual es de ${presupuesto} €`
 }
 
-function CrearGasto(descripcion,valor) //funcion constructora= ne retourne rien attention! //“Je définis une fonction appelée CrearGasto
+function CrearGasto(descripcion,valor,fecha,...etiquetas) //funcion constructora= ne retourne rien attention! //“Je définis une fonction appelée CrearGasto
 {
     this.descripcion=descripcion; //Dans l’objet en cours de création (this)->j’assigne à la propriété descripcion,la valeur du paramètre descripcion
     //JavaScript retourne AUTOMATIQUEMENT :this
@@ -36,6 +35,10 @@ function CrearGasto(descripcion,valor) //funcion constructora= ne retourne rien 
     {
         this.valor=0;
     }
+   this.etiquetas=etiquetas;
+   this.fecha= Date.now();
+   
+
     //METODOS
  this.mostrarGasto=function() //bien mettre this pour faire reference al afonction crear
  {
@@ -63,13 +66,25 @@ this.actualizarValor=function(valor)
 //crear funciones vacias
 
 function listarGastos()
-{}
+{
+    return gastos;// ✔ Devuelve un array vacío si no hay gastos (valor por defecto)
+}
 
-function anyadirGasto()
-{}
+function anyadirGasto(gasto)
+{
+    gasto.id=idGasto;//Añadir al objeto gasto pasado como parámetro una propiedad id cuyo valor será el valor actual de la variable global idGasto.
+    idGasto++;//Incrementar el valor de la variable global idGasto
+    gastos.push(gasto);//Añadir el objeto gasto pasado como parámetro a la variable global gastos. El gasto se debe añadir al final del array.
+}
 
-function borrarGasto()
-{}
+function borrarGasto(idGasto)
+{
+    //Función de 1 parámetro que eliminará de la variable global gastos el objeto gasto cuyo id haya sido pasado como parámetro. Si no existe un gasto con el id proporcionado, no hará nada.
+for (let i=0; i<gastos.lenght; i++)
+{
+    if (gasto[i].id=idGasto)
+    gastos.splice(id,1)}
+}
 
 function calcularTotalGastos()
 {}
