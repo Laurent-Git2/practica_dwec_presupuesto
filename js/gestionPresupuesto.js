@@ -92,6 +92,7 @@ let suma=0;
 for (let i=0;i<gastos.length;i++)
 {
     suma=suma+gasto[i].valor;
+
     
 }
 return suma
@@ -99,7 +100,7 @@ return suma
 
 function calcularBalance()
 {
-    let media=calcularTotalGastos()/gastos.lenght;
+  return presupuesto-calcularTotalGastos();  
 }
 // NO MODIFICAR A PARTIR DE AQUÍ: exportación de funciones y objetos creados para poder ejecutar los tests.
 // Las funciones y objetos deben tener los nombres que se indican en el enunciado
