@@ -56,7 +56,32 @@ this.actualizarValor=function(valor)
     this.valor=valor;
     }
     }
- }
+/*this.mostrarGastoCompleto=function()
+{
+
+}
+this.actualizarFecha=function()//- Función de 1 parámetro que actualizará la propiedad fecha del objeto. Deberá recibir la fecha en formato string que sea entendible por la función Date.parse. Si la fecha no es válida, se dejará sin modificar.
+{
+
+}
+*/
+this.anyadirEtiquetas=function(...etiquetas)//Función de un número indeterminado de parámetros que añadirá las etiquetas pasadas como parámetro a la propiedad etiquetas del objeto. Deberá comprobar que no se creen duplicados
+{
+for(let i = 0; i < etiquetas.length; i++)
+
+    if(!this.etiquetas.includes(etiquetas[i]))
+{
+    this.etiquetas.push(etiquetas[i]);
+}
+}
+
+
+/*
+this.borrarEtiquetas()//Función de un número indeterminado de parámetros que recibirá uno o varios nombres de etiquetas y procederá a eliminarlas (si existen) de la propiedad etiquetas del objeto
+{
+
+}*/
+}
 
  //JS2
  //crear 2 variables locales
@@ -80,10 +105,10 @@ function anyadirGasto(gasto)
 function borrarGasto(idGasto)
 {
     //Función de 1 parámetro que eliminará de la variable global gastos el objeto gasto cuyo id haya sido pasado como parámetro. Si no existe un gasto con el id proporcionado, no hará nada.
-for (let i=0; i<gastos.lenght; i++)
+for (let i=0; i<gastos.length; i++)
 {
-    if (gasto[i].id=idGasto)
-    gastos.splice(id,1)}
+    if (gastos[i].id==idGasto)
+    gastos.splice(i,1)}
 }
 
 function calcularTotalGastos()
@@ -91,9 +116,7 @@ function calcularTotalGastos()
 let suma=0;
 for (let i=0;i<gastos.length;i++)
 {
-    suma=suma+gasto[i].valor;
-
-    
+    suma=suma+gastos[i].valor;  
 }
 return suma
 }
