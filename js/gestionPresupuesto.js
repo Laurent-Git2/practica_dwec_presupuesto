@@ -76,11 +76,19 @@ for(let i = 0; i < etiquetas.length; i++)
 }
 
 
-/*
-this.borrarEtiquetas()//Función de un número indeterminado de parámetros que recibirá uno o varios nombres de etiquetas y procederá a eliminarlas (si existen) de la propiedad etiquetas del objeto
-{
 
-}*/
+this.borrarEtiquetas=function(...etiquetas)//Función de un número indeterminado de parámetros que recibirá uno o varios nombres de etiquetas y procederá a eliminarlas (si existen) de la propiedad etiquetas del objeto
+{
+    for(let i = this.etiquetas.length-1; i>=0;i--)
+{
+    //splice=con posicion
+    if(etiquetas.includes(this.etiquetas[i]))
+    {
+        this.etiquetas.splice(i,1);
+    
+    }//la olvidaba
+}
+}
 }
 
  //JS2
@@ -108,7 +116,8 @@ function borrarGasto(idGasto)
 for (let i=0; i<gastos.length; i++)
 {
     if (gastos[i].id==idGasto)
-    gastos.splice(i,1)}
+    {gastos.splice(i,1)}
+}
 }
 
 function calcularTotalGastos()
