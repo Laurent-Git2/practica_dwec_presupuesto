@@ -73,7 +73,7 @@ this.mostrarGastoCompleto=function()
 return `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €.
 Fecha: ${this.fechaOK}
 Etiquetas:
- ${this.etiquetas.join("\n - ")}`
+- ${this.etiquetas.join("\n- ")}\n`
 }
 
 this.actualizarFecha=function(fecha)//- Función de 1 parámetro que actualizará la propiedad fecha del objeto. Deberá recibir la fecha en formato string que sea entendible por la función Date.parse. Si la fecha no es válida, se dejará sin modificar.
@@ -97,8 +97,6 @@ for(let i = 0; i < etiquetas.length; i++)
 }
 }
 
-
-
 this.borrarEtiquetas=function(...etiquetas)//Función de un número indeterminado de parámetros que recibirá uno o varios nombres de etiquetas y procederá a eliminarlas (si existen) de la propiedad etiquetas del objeto
 {
     for(let i = this.etiquetas.length-1; i>=0;i--)//antes con for(let i = 0; i < etiquetas.length; i++) me borraba la nueva posicion siempre
@@ -111,6 +109,40 @@ this.borrarEtiquetas=function(...etiquetas)//Función de un número indeterminad
     }
 }
 }
+
+this.obtenerPeriodoAgrupacion = function(periodo)//JS3
+{
+    const fechaObj = new Date(this.fecha);
+    let anyo = fechaObj.getFullYear();
+let mes = fechaObj.getMonth() + 1;
+let dia = fechaObj.getDate();
+
+if(mes < 10)
+    {
+        mes = "0" + mes;
+    }
+
+    if(dia < 10)
+    {
+        dia = "0" + dia;
+    }
+
+    if(periodo == "anyo")
+    {
+        return anyo;
+    }
+
+    if(periodo == "mes")
+    {
+        return anyo + "-" + mes;
+    }
+
+    if(periodo == "dia")
+    {
+        return anyo + "-" + mes + "-" + dia;
+    }
+}
+
 }
 
  //JS2
@@ -156,6 +188,15 @@ function calcularBalance()
 {
   return presupuesto-calcularTotalGastos();  
 }
+function filtrarGastos()
+{
+
+}
+
+function agruparGastos()
+{
+
+}
 // NO MODIFICAR A PARTIR DE AQUÍ: exportación de funciones y objetos creados para poder ejecutar los tests.
 // Las funciones y objetos deben tener los nombres que se indican en el enunciado
 // Si al obtener el código de una práctica se genera un conflicto, por favor incluye todo el código que aparece aquí debajo
@@ -167,5 +208,7 @@ export   {
     anyadirGasto,
     borrarGasto,
     calcularTotalGastos,
-    calcularBalance
+    calcularBalance,
+    filtrarGastos,
+    agruparGastos
 }
