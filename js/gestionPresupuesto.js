@@ -36,8 +36,19 @@ function CrearGasto(descripcion,valor,fecha,...etiquetas) //funcion constructora
         this.valor=0;
     }
    this.etiquetas=etiquetas;
-   this.fecha= Date.now();
-   
+   //this.fecha= Date.now();
+const fechaTs = Date.parse(fecha);
+
+if(!isNaN(fechaTs))
+{
+    this.fecha = fechaTs;
+}
+else
+{
+    this.fecha = Date.now();
+}
+
+this.fechaOK = new Date(this.fecha).toLocaleString();
 
     //METODOS
  this.mostrarGasto=function() //bien mettre this pour faire reference al afonction crear
@@ -56,15 +67,26 @@ this.actualizarValor=function(valor)
     this.valor=valor;
     }
     }
-/*this.mostrarGastoCompleto=function()
+this.mostrarGastoCompleto=function()
 {
 
+return `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €.
+Fecha: ${this.fechaOK}
+Etiquetas:
+ ${this.etiquetas.join("\n - ")}`
 }
-this.actualizarFecha=function()//- Función de 1 parámetro que actualizará la propiedad fecha del objeto. Deberá recibir la fecha en formato string que sea entendible por la función Date.parse. Si la fecha no es válida, se dejará sin modificar.
-{
 
+this.actualizarFecha=function(fecha)//- Función de 1 parámetro que actualizará la propiedad fecha del objeto. Deberá recibir la fecha en formato string que sea entendible por la función Date.parse. Si la fecha no es válida, se dejará sin modificar.
+{
+const fechaTs = Date.parse(fecha);
+
+if(!isNaN(fechaTs))
+{
+    this.fecha = fechaTs;
+    this.fechaOK = new Date(this.fecha).toLocaleString();
 }
-*/
+}
+
 this.anyadirEtiquetas=function(...etiquetas)//Función de un número indeterminado de parámetros que añadirá las etiquetas pasadas como parámetro a la propiedad etiquetas del objeto. Deberá comprobar que no se creen duplicados
 {
 for(let i = 0; i < etiquetas.length; i++)
@@ -79,14 +101,14 @@ for(let i = 0; i < etiquetas.length; i++)
 
 this.borrarEtiquetas=function(...etiquetas)//Función de un número indeterminado de parámetros que recibirá uno o varios nombres de etiquetas y procederá a eliminarlas (si existen) de la propiedad etiquetas del objeto
 {
-    for(let i = this.etiquetas.length-1; i>=0;i--)
+    for(let i = this.etiquetas.length-1; i>=0;i--)//antes con for(let i = 0; i < etiquetas.length; i++) me borraba la nueva posicion siempre
 {
     //splice=con posicion
     if(etiquetas.includes(this.etiquetas[i]))
     {
         this.etiquetas.splice(i,1);
     
-    }//la olvidaba
+    }
 }
 }
 }
