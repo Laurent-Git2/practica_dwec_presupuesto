@@ -188,11 +188,81 @@ function calcularBalance()
 {
   return presupuesto-calcularTotalGastos();  
 }
-function filtrarGastos()
+function filtrarGastos(filtros)//Je crée une fonction appelée filtrarGastos.//➡️ Cette fonction reçoit un paramètre nommé filtros.//➡️ filtros sera un objet contenant les critères de recherche
 {
+    // fechaDesde
+    return gastos.filter(function(gasto)
+    {
+        if(filtros.fechaDesde &&
+           gasto.fecha < Date.parse(filtros.fechaDesde))
+        {
+            return false;
+        }
 
+        if(filtros.fechaHasta &&
+           gasto.fecha > Date.parse(filtros.fechaHasta))
+        {
+            return false;
+        }
+
+        if(filtros.valorMinimo &&
+           gasto.valor < filtros.valorMinimo)
+        {
+            return false;
+        }
+
+        if(filtros.valorMaximo &&
+           gasto.valor > filtros.valorMaximo)
+        {
+            return false;
+        }
+
+        if(filtros.descripcionContiene &&
+          !gasto.descripcion.toLowerCase().includes(
+           filtros.descripcionContiene.toLowerCase()))
+        {
+            return false;
+        }
+        if(filtros.etiquetasTiene)
+            {
+                let encontrado = filtros.etiquetasTiene.some(function(etiqueta)
+                {
+                    return gasto.etiquetas.includes(etiqueta);
+                });
+        
+                if(!encontrado)
+                {
+                    return false;
+
+                }
+            }
+            return true;
+    });
 }
 
+
+
+// fechaHasta
+
+// valorMinimo
+
+// valorMaximo
+
+// descripcionContiene
+
+// etiquetasTiene
+
+
+// gastos.filter(gasto => true); //➡️ Je retourne le résultat de filter() appliqué au tableau global gastos.➡️ gastos = tableau contenant tous les gastos.
+
+//.filter(...)➡️ Je parcours tous les éléments du tableau un par un.
+//gasto =>➡️ Chaque élément du tableau sera appelé temporairement gasto.
+//➡️ Pour chaque gasto, je retourne toujours true.➡️ Donc chaque gasto est accepté.
+
+
+       
+
+        
 function agruparGastos()
 {
 
