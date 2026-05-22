@@ -263,10 +263,55 @@ function filtrarGastos(filtros)//Je crée une fonction appelée filtrarGastos.//
        
 
         
-function agruparGastos()
+function agruparGastos(periodo, etiquetas, fechaDesde, fechaHasta)
 {
 
+   // etiquetas - Array de etiquetas. Solo se seleccionarán los gastos que contengan alguna de esas etiquetas. Si no se indica o es un array vacío, se considerarán todos los gastos.
+   if(!periodo)
+    {
+        periodo = "mes";
+    }
+
+    let resultado = {};
+
+    let filtros = {};
+
+    if(fechaDesde) filtros.fechaDesde = fechaDesde;
+    if(fechaHasta) filtros.fechaHasta = fechaHasta;
+    if(etiquetas && etiquetas.length > 0)
+    {
+        filtros.etiquetasTiene = etiquetas;
+    }
+
+    let lista = filtrarGastos(filtros);
+
+    for(let gasto of lista)
+    {
+        let clave = gasto.obtenerPeriodoAgrupacion(periodo);
+
+        if(resultado[clave] === undefined)
+        {
+            resultado[clave] = gasto.valor;
+        }
+        else
+        {
+            resultado[clave] += gasto.valor;
+        }
+    }
+
+    return resultado;
 }
+
+
+   /*return gastos.reduce(function(resultado,gasto)
+   {
+   
+    if(etiquetas.etiquetasTiene)
+    {for etiquetas(of gasto)
+        agrup.push(etiquetas);
+    }
+   })*/
+
 // NO MODIFICAR A PARTIR DE AQUÍ: exportación de funciones y objetos creados para poder ejecutar los tests.
 // Las funciones y objetos deben tener los nombres que se indican en el enunciado
 // Si al obtener el código de una práctica se genera un conflicto, por favor incluye todo el código que aparece aquí debajo
